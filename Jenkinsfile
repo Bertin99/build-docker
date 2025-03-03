@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     // Crée l'image Docker à partir du Dockerfile
-                    sh "sudo docker build -t ${ubuntu:22.04}:${TAG} ."
+                    sh "sudo -S docker build -t ${ubuntu:22.04}:${TAG} ."
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
                 script {
                     // Lance un conteneur pour tester l'image
                     // Teste si la commande `ping` fonctionne
-                    sh "sudo docker run --rm ${ubuntu:22.04}:${TAG} ping -c 4 8.8.8.8"
+                    sh "sudo -S docker run --rm ${ubuntu:22.04}:${TAG} ping -c 4 8.8.8.8"
                 }
             }
         }
